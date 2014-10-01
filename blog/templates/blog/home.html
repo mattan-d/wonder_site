@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+
+    <p>There are {{ x }} blog posts in your blog.</p>
+
+    {% for object in object_list %}
+        <div class="panel panel-default">
+            <div class="panel-heading"><a
+                    href="{% url "post" object.id %}"><b>{{ object.title }}</b></a>
+            </div>
+            <div class="panel-body">
+                {{ object.content|linebreaks }}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block content_wanted %}
+
+    <p>There are {{ y }} positions in your site.</p>
+
+    {% for obj in object_wanted_list %}
+        <div class="panel panel-default">
+            <div class="panel-heading"><a href="{% url "wanted" obj.id %}"><b>{{obj.position}}</b></a>
+            </div>
+            <div class="panel-body">
+                {{obj.company}}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block spend %}
+
+    {% for obj in object_spend_list %}
+        <div class="panel panel-default">
+            <div class="panel-heading"><a href="{% url "wanted" obj.id %}"><b>{{obj.name}}</b></a>
+            </div>
+            <div class="panel-body">
+               {{obj.cost}} Dollar at {{obj.pay_date}}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

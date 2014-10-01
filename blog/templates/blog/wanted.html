@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ object.position }}
+{% endblock %}
+
+
+{% block content %}
+    <h1>{{ object.position }}</h1>
+    <p>{{ object.company }}</p>
+    <p>{{ object.published_at }}</p>
+    <hr/>
+{% endblock %}
+
+{% block content_wanted %}
+    <h1>Jobs Information</h1>
+{% endblock %}
