@@ -1,5 +1,6 @@
 import random
 
+from django.db.models import Sum
 from django.shortcuts import render, get_object_or_404
 
 from blog.models import Post
@@ -12,7 +13,8 @@ def home(request):
         'y': Wanted.objects.count(),
         'x': Post.objects.count(),
         'object_list': Post.objects.order_by('-id').all(),
-        'object_spend_list': Spend.objects.order_by('date').all(),
+        'object_spend_list': Spend.objects.order_by('date').all()[:10],
+        'spend_sum': Spend.objects.aggregate(Sum('cost')),
         'object_wanted_list': Wanted.objects.order_by('-id').all(),
     })
 

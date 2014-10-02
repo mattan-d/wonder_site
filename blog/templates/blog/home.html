@@ -39,12 +39,19 @@
 
 {% block spend %}
 
+    <ul class="col-md-3 list-group">
+      <li class="list-group-item">
+        <span class="badge glyphicon glyphicon-euro">{{spend_sum.cost__sum}}</span>
+        total money you spend
+      </li>
+    </ul>
+
     {% for obj in object_spend_list %}
         <div class="panel panel-default">
             <div class="panel-heading"><a href="{% url "wanted" obj.id %}"><b>{{obj.name}}</b></a>
             </div>
             <div class="panel-body">
-               {{obj.cost}} Dollar at {{obj.pay_date}}
+                <span class="glyphicon glyphicon-euro">{{obj.cost}}</span> at {{obj.pay_date}}
             </div>
         </div>
     {% endfor %}
